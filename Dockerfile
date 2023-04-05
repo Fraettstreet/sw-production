@@ -32,7 +32,7 @@ USER sw6
 
 ADD --chown=sw6 . .
 
-RUN APP_URL="http://localhost" DATABASE_URL="" bin/console assets:install \
+RUN APP_URL="http://sw-production.myserver.fraettstreet.pro" DATABASE_URL="" bin/console assets:install \
     && rm -Rf var/cache \
     && touch install.lock \
     && mkdir -p var/cache
@@ -44,4 +44,4 @@ EXPOSE 8000
 ENTRYPOINT ["./bin/entrypoint.sh"]
 
 # Configure a healthcheck to validate that everything is up&running
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8000/fpm-ping
+HEALTHCHECK --timeout=10s CMD curl --silent --fail http://sw-production.myserver.fraettstreet.pro:8000/fpm-ping
